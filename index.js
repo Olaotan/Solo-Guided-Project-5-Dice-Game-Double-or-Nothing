@@ -14,11 +14,7 @@ const resetBtn = document.getElementById("resetBtn")
 const doubleOrNothingBtn = document.getElementById("double-or-nothing-btn")
 const tripleOrRestartBtn = document.getElementById("triple-or-restart-btn")
 
-// function showResetButton() {
-//     rollBtn.style.display = "none"
-//     doubleBtn.style.display = "none"
-//     resetBtn.style.display = "block"
-// }
+
 
 // TO GET REGULAR DICE VALUE
  rollBtn.addEventListener("click", function() {
@@ -43,14 +39,7 @@ const tripleOrRestartBtn = document.getElementById("triple-or-restart-btn")
 
     }
     
-    if (player1Score >= 20) {
-        message.textContent = "Player 1 Won 🥳"
-        showRestartButton()
-    }  else if (player2Score >= 20) {
-        message.textContent = "Player 2 Won 🎉"
-        showRestartButton()
-    }
-    player1Turn = !player1Turn
+    declareWinner()
     hideOrShowTripleBtn()
 })
  
@@ -89,16 +78,7 @@ if (player1Turn) {
         message.textContent = "Player 1 Turn"
     }
     
-    if (player1Score >= 20) {
-        message.textContent = "Player 1 Won 🥳"
-        
-        showRestartButton()
-    }  else if (player2Score >= 20) {
-        message.textContent = "Player 2 Won 🎉"
-        
-        showRestartButton()
-    }
-    player1Turn = !player1Turn
+    declareWinner()
     hideOrShowTripleBtn() 
 })
 
@@ -110,7 +90,7 @@ tripleOrRestartBtn.addEventListener("click", function() {
     //chanceNo for creating randomness
     const chanceNo = Math.floor(Math.random()*2)+1
 
- //For creating the trile or restart game
+ //For creating the triple or reset score
  if (chanceNo === 1) {
      tripleRandomNumber = tripleRandomNumber
  } else {
@@ -138,47 +118,23 @@ if (player1Turn) {
         message.textContent = "Player 1 Turn"
     }
     
-    if (player1Score >= 20) {
-        message.textContent = "Player 1 Won 🥳"
-        showRestartButton()
-    }  else if (player2Score >= 20) {
-        message.textContent = "Player 2 Won 🎉"
-        showRestartButton()
-    }
-    player1Turn = !player1Turn
+    declareWinner()
     hideOrShowTripleBtn() 
 })
 
 
 
 
-
-// function reset() {
-//     player1Score = 0
-//     player2Score = 0
-//     player1Turn = true
-//     player1Scoreboard.textContent = 0
-//     player2Scoreboard.textContent = 0
-//     player1Dice.textContent = "-"
-//     player2Dice.textContent = "-"
-//     message.textContent = "Player 1 Turn"
-//     resetBtn.style.display = "none"
-//     rollBtn.style.display = "block"
-//     doubleBtn.style.display = "block"
-//     player2Dice.classList.remove("active")
-//     player1Dice.classList.add("active")
-// }
-
 // TO SHOW THE RESTART GAME BUTTON AND HIDE OTHERS
 function showRestartButton() {
     rollBtn.style.display = "none"
     doubleOrNothingBtn.style.display = "none"
-    tripleOrRestartBtn.style.display = "none"
+  //not needed  tripleOrRestartBtn.style.display = "none"
     resetBtn.style.display = "block"
 }
 
 //TO RESET/RESTART THE GAME. Note triple or restart option doesnt show at the start as it creates cheatmode
-function startGame() {
+function restartGame() {
 const chanceNo = Math.floor(Math.random()*2)
 
      //For Random/Fair Start
@@ -200,14 +156,14 @@ const chanceNo = Math.floor(Math.random()*2)
     resetBtn.style.display = "none"
     rollBtn.style.display = "block"
     doubleOrNothingBtn.style.display = "block"
-    tripleOrRestartBtn.style.display = "none"
+  //not needed  tripleOrRestartBtn.style.display = "none"
     player2Dice.classList.remove("active")
     player1Dice.classList.add("active")
 }
 
 //Call Reset function on click
 resetBtn.addEventListener("click", function(){
-startGame()
+restartGame()
 })
 
 
@@ -225,6 +181,18 @@ function hideOrShowTripleBtn() {
     }
 }
 
+
+//TO DECLARE WINNER
+function declareWinner() {
+        if (player1Score >= 20) {
+        message.textContent = "Player 1 Won 🥳"
+        showRestartButton()
+    }  else if (player2Score >= 20) {
+        message.textContent = "Player 2 Won 🎉"
+        showRestartButton()
+    }
+    player1Turn = !player1Turn
+}
 
 // let canDrink = 20
 // let drinkingAge = (canDrink >= 21) ? player1Score === 0: player1Score === 2
