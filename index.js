@@ -135,7 +135,7 @@ function showRestartButton() {
 
 //TO RESET/RESTART THE GAME. Note triple or restart option doesnt show at the start as it creates cheatmode
 function restartGame() {
-const chanceNo = Math.floor(Math.random()*2)
+//const chanceNo = Math.floor(Math.random()*2)
 
 //      //For Random/Fair Start
 //   if (chanceNo) {
