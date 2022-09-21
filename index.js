@@ -137,15 +137,25 @@ function showRestartButton() {
 function restartGame() {
 const chanceNo = Math.floor(Math.random()*2)
 
-     //For Random/Fair Start
-  if (chanceNo) {
+//      //For Random/Fair Start
+//   if (chanceNo) {
+//      player1Turn = true    
+//      message.textContent = "Player 1 Turn"  
+//  } else {
+//      player1Turn = !player1Turn
+//      message.textContent = "Player 2 Turn"     
+//  }    
+  
+        //For last round loser to start
+    if (player1Score < player2Score){
      player1Turn = true    
      message.textContent = "Player 1 Turn"  
  } else {
      player1Turn = !player1Turn
      message.textContent = "Player 2 Turn"     
  }    
-  
+        
+        
     player1Score = 0
     player2Score = 0
     player1Scoreboard.textContent = 0
